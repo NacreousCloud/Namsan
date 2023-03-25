@@ -1,6 +1,10 @@
 import type { GatsbyConfig } from 'gatsby';
 import { resolve, join } from 'path';
 
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Namsan`,
@@ -76,6 +80,9 @@ const config: GatsbyConfig = {
       },
     },
   ],
+  flags: {
+    DEV_SSR: true,
+  },
 };
 
 export default config;
