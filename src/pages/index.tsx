@@ -8,18 +8,26 @@ const ThirdSection = React.lazy(() => import('@Components/main/ThirdSection'));
 const ForthSection = React.lazy(() => import('@Components/main/ForthSection'));
 
 const Main: React.FC<PageProps> = () => {
+  const isSSR = typeof window === 'undefined';
+
   return (
     <>
-      <React.Suspense fallback={<Skeleton count={3} height={200} />}>
-        <FirstSection />
-      </React.Suspense>
+      {!isSSR && (
+        <React.Suspense fallback={<Skeleton count={3} height={200} />}>
+          <FirstSection />
+        </React.Suspense>
+      )}
       <SecondSection />
-      <React.Suspense fallback={<Skeleton count={2} />}>
-        <ThirdSection />
-      </React.Suspense>
-      <React.Suspense fallback={<Skeleton count={3} />}>
-        <ForthSection />
-      </React.Suspense>
+      {!isSSR && (
+        <React.Suspense fallback={<Skeleton count={2} />}>
+          <ThirdSection />
+        </React.Suspense>
+      )}
+      {!isSSR && (
+        <React.Suspense fallback={<Skeleton count={3} />}>
+          <ForthSection />
+        </React.Suspense>
+      )}
       <FifthSection />
     </>
   );

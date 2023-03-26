@@ -12,7 +12,6 @@ const FifthSection: React.FC = () => {
       <S.InnerWrapper>
         {bannerList.map((banner, index) => (
           <Banner
-            key={index}
             title={banner.title}
             tag={banner.tag}
             buttonTitle={banner.buttonName}

@@ -1,3 +1,4 @@
+import { WrappedComponentProps } from 'gatsby-plugin-intl';
 import { ChangeEventHandler, FormEventHandler } from 'react';
 
 interface IInputProps {
